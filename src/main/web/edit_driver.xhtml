@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/templates/main.xhtml">
+    <f:metadata>
+        <f:viewParam name="driver" value="#{editDriver.driver}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid styleClass="table table-striped" columns="3">
+                <h:outputLabel value="Imię:" for="name"/>
+                <h:inputText styleClass="form-control" id="name" value="#{editDriver.driver.firstName} #{editDriver.driver.secondName}"/>
+                <h:message for="name"/>
+
+                <h:outputLabel value="Zespół:" for="team"/>
+                <h:inputText styleClass="form-control" id="team" value="#{editDriver.driver.team}"/>
+                <h:message for="team"/>
+
+                <h:outputLabel value="Narodowość:" for="nationality"/>
+                <h:inputText styleClass="form-control" id="nationality" value="#{editDriver.driver.nationality}"/>
+                <h:message for="nationality"/>
+
+                <h:outputLabel value="Data urodzenia (RRRR-MM-DD):" for="birthDate"/>
+                <h:inputText styleClass="form-control" id="birthDate" value="#{editDriver.driver.dateOfBirth}">
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                </h:inputText>
+                <h:message for="birthDate"/>
+
+                <h:outputLabel value="Wyniki:" for="results"/>
+                <h:selectManyListbox styleClass="form-control" id="results"
+                                     value="#{editDriver.driver.results}">
+                    <f:selectItems value="#{editDriver.results}" var="result" itemValue="#{result}"
+                                   itemLabel="#{result.position} +#{result.gapToLeader}"/>
+                </h:selectManyListbox>
+                <h:message for="results"/>
+            </h:panelGrid>
+
+            <h:commandButton styleClass="btn btn-primary" value="Zapisz"
+                             action="#{editDriver.saveDriver()}"/>
+            <h:button styleClass="btn btn-default ml-1" value="Powrót" outcome="list_drivers.xhtml"/>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/templates/main.xhtml">
+    <f:metadata>
+        <f:viewParam name="result" value="#{viewResult.result}" required="true"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <h:panelGrid  styleClass="table table-striped" columns="2">
+            <h:outputLabel value="Miejsce:" for="position"/>
+            <h:outputText id="position" value="#{viewResult.result.position}"/>
+
+            <h:outputLabel value="Strata do lidera:" for="gap"/>
+            <h:outputText id="gap" value="#{viewResult.result.gapToLeader}"/>
+
+            <h:outputLabel value="Pit-stopy:" for="pits"/>
+            <h:outputText id="pits" value="#{viewResult.result.pitStops}"/>
+        </h:panelGrid>
+
+        <h:button styleClass="btn btn-default" value="Powrót" outcome="list_results.xhtml"/>
+    </ui:define>
+</ui:composition>

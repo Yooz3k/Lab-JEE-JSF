@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/templates/main.xhtml">
+    <ui:define name="content">
+
+        <h:dataTable styleClass="table table-striped table-hover"
+                     value="#{listResults.results}" var="result">
+            <h:column>
+                <h:outputText value="#{result.id}"/>
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{result.position}"/>
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{result.didFinish}"/>
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{result.gapToLeader}"/>
+            </h:column>
+
+            <h:column>
+                <h:outputText value="#{result.pitStops}"/>
+            </h:column>
+
+            <h:column>
+                <h:button styleClass="btn btn-default" value="Pokaż" outcome="view_result.xhtml">
+                    <f:param name="result" value="#{result.id}"/>
+                </h:button>
+            </h:column>
+
+            <h:column>
+                <h:button styleClass="btn btn-default" value="Edytuj" outcome="edit_result.xhtml">
+                    <f:param name="result" value="#{result.id}"/>
+                </h:button>
+            </h:column>
+
+            <h:column>
+                <h:form>
+                    <h:commandButton styleClass="btn btn-danger" value="Usuń"
+                                     action="#{listResults.removeResult(result)}"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+
+        <h:button  styleClass="btn btn-primary" value="Dodaj wynik" outcome="edit_result.xhtml"/>
+
+    </ui:define>
+</ui:composition>

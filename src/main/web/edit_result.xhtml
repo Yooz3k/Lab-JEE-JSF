@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/templates/main.xhtml">
+    <f:metadata>
+        <f:viewParam name="result" value="#{editResult.result}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid styleClass="table table-striped" columns="3">
+                <h:outputLabel value="Miejsce:" for="position"/>
+                <h:inputText styleClass="form-control" id="position" value="#{editResult.result.position}"/>
+                <h:message for="position"/>
+
+                <h:outputLabel value="Strata do lidera:" for="gap"/>
+                <h:inputText styleClass="form-control" id="gap" value="#{editResult.result.gapToLeader}"/>
+                <h:message for="gap"/>
+
+                <h:outputLabel value="Pit-stopy:" for="pits"/>
+                <h:inputText styleClass="form-control" id="pits" value="#{editResult.result.pitStops}"/>
+                <h:message for="pits"/>
+            </h:panelGrid>
+
+            <h:commandButton styleClass="btn btn-primary" value="Zapisz"
+                             action="#{editResult.saveResult()}"/>
+            <h:button styleClass="btn btn-default ml-1" value="Powrót" outcome="list_results.xhtml"/>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

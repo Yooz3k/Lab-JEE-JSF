@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/templates/main.xhtml">
+    <f:metadata>
+        <f:viewParam name="driver" value="#{viewDriver.driver}" required="true"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <h:panelGrid  styleClass="table table-striped" columns="2">
+            <h:outputLabel value="Kierowca:" for="name"/>
+            <h:outputText id="name" value="#{viewDriver.driver.secondName}"/>
+
+            <h:outputLabel value="Zespół:" for="team"/>
+            <h:outputText id="team" value="#{viewDriver.driver.team}"/>
+
+            <h:outputLabel value="Narodowość:" for="nationality"/>
+            <h:outputText id="nationality" value="#{viewDriver.driver.nationality}"/>
+
+            <h:outputLabel value="Data urodzenia:" for="birthDate"/>
+            <h:outputText id="birthDate" value="#{viewDriver.driver.dateOfBirth}">
+                <f:convertDateTime pattern="yyyy-MM-dd"/>
+            </h:outputText>
+        </h:panelGrid>
+
+        <h:button styleClass="btn btn-default" value="Powrót" outcome="list_drivers.xhtml"/>
+    </ui:define>
+</ui:composition>
