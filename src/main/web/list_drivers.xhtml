@@ -16,7 +16,7 @@
             </h:column>
 
             <h:column>
-                <h:outputText value="#{driver.nationality}" />
+                <h:outputText value="#{driver.nationality}"/>
             </h:column>
 
             <h:column>
@@ -30,26 +30,22 @@
             </h:column>
 
             <h:column>
-                <h:outputText value="#{driver.wasWorldChampion}"/>
-            </h:column>
-
-            <h:column>
                 <h:dataTable value="#{driver.results}" var="result">
                     <h:column>
-                        <h:outputText value="#{result.position} #{result.gapToLeader}"/>
+                        <h:outputText value="#{result.position}. (+#{result.gapToLeader})"/>
                     </h:column>
                 </h:dataTable>
             </h:column>
 
             <h:column>
                 <h:button styleClass="btn btn-default" value="Pokaż" outcome="view_driver.xhtml">
-                    <f:param name="result" value="#{driver.id}"/>
+                    <f:param name="driver" value="#{driver.id}"/>
                 </h:button>
             </h:column>
 
             <h:column>
                 <h:button styleClass="btn btn-default" value="Edytuj" outcome="edit_driver.xhtml">
-                    <f:param name="result" value="#{driver.id}"/>
+                    <f:param name="driver" value="#{driver.id}"/>
                 </h:button>
             </h:column>
 

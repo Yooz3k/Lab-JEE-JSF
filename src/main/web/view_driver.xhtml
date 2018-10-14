@@ -10,7 +10,7 @@
     <ui:define name="content">
         <h:panelGrid  styleClass="table table-striped" columns="2">
             <h:outputLabel value="Kierowca:" for="name"/>
-            <h:outputText id="name" value="#{viewDriver.driver.secondName}"/>
+            <h:outputText id="name" value="#{viewDriver.driver.firstName} #{viewDriver.driver.secondName}"/>
 
             <h:outputLabel value="Zespół:" for="team"/>
             <h:outputText id="team" value="#{viewDriver.driver.team}"/>

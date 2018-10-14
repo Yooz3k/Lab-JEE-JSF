@@ -22,5 +22,5 @@ public class Result implements Serializable {
 
     private Boolean didFinish;
 
-    //TODO: dodac info o torze
+    private String circuit;
 }

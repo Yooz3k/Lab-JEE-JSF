@@ -9,11 +9,17 @@
 
     <ui:define name="content">
         <h:panelGrid  styleClass="table table-striped" columns="2">
+            <h:outputLabel value="Tor:" for="circuit"/>
+            <h:outputText id="circuit" value="#{viewResult.result.circuit}"/>
+
             <h:outputLabel value="Miejsce:" for="position"/>
             <h:outputText id="position" value="#{viewResult.result.position}"/>
 
             <h:outputLabel value="Strata do lidera:" for="gap"/>
             <h:outputText id="gap" value="#{viewResult.result.gapToLeader}"/>
+
+            <h:outputLabel value="Czy ukończył?:" for="didFinish"/>
+            <h:outputText id="didFinish" value="#{viewResult.result.didFinish}"/>
 
             <h:outputLabel value="Pit-stopy:" for="pits"/>
             <h:outputText id="pits" value="#{viewResult.result.pitStops}"/>

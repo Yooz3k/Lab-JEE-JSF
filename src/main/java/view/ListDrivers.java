@@ -6,11 +6,12 @@ import business.entities.Driver;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Named
 @RequestScoped
-public class ListDrivers {
+public class ListDrivers implements Serializable {
 
     @Inject
     private ResultService resultService;
@@ -21,7 +22,7 @@ public class ListDrivers {
         if (drivers != null)
             return drivers;
         else
-            return resultService.findAllDrivers();
+            return drivers = resultService.findAllDrivers();
     }
 
     public String removeDriver(Driver driver) {

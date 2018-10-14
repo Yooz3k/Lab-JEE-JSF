@@ -4,12 +4,12 @@ import business.entities.Driver;
 import business.entities.Result;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
 
-@ApplicationScoped //TODO: sprawdzic SessionScoped
+@SessionScoped
 public class ResultService implements Serializable {
 
     private SortedMap<Integer, Result> results = new TreeMap<>();
@@ -19,12 +19,12 @@ public class ResultService implements Serializable {
     @PostConstruct
     public void init() {
 
-        Result res1 = new Result(1, 5, new BigDecimal("18.208"), 1, true);
-        Result res2 = new Result(2, 2, new BigDecimal("8.705"), 1, true);
+        Result res1 = new Result(1, 5, new BigDecimal("18.208"), 1, true, "Monza");
+        Result res2 = new Result(2, 2, new BigDecimal("8.705"), 1, true, "Monza");
 
-        Driver driver1 = new Driver(1, "Max", "Verstappen", "Netherlands", "Red Bull",
+        Driver driver1 = new Driver(1, "Max", "Verstappen", "Holandia", "Red Bull",
                 returnDate(1997, 9, 30), false, Arrays.asList(res1));
-        Driver driver2 = new Driver(2, "Kimi", "Raikkonen", "Finland", "Ferrari",
+        Driver driver2 = new Driver(2, "Kimi", "Raikkonen", "Finlandia", "Ferrari",
                 returnDate(1979, 10, 17), true, Arrays.asList(res2));
 
         results.put(res1.getId(), res1);
@@ -67,13 +67,23 @@ public class ResultService implements Serializable {
     }
 
     public void saveResult(Result result) {
-        if (result != null && result.getId() != null)
+        if (result != null) {
+            if (result.getId() == null) {
+                result.setId(results.lastKey() + 1);
+            }
+
             results.put(result.getId(), result);
+        }
     }
 
     public void saveDriver(Driver driver) {
-        if (driver != null && driver.getId() != null)
+        if (driver != null) {
+            if (driver.getId() == null) {
+                driver.setId(drivers.lastKey() + 1);
+            }
+
             drivers.put(driver.getId(), driver);
+        }
     }
 
     private Date returnDate(int year, int month, int day) {

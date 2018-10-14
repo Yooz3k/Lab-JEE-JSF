@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class AbstractEntityConverter<T> implements Converter<T> {
+public abstract class AbstractEntityConverter<T> implements Converter<T> {
 
     @Inject
     ResultService resultService;

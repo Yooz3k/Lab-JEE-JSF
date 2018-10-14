@@ -6,11 +6,12 @@ import business.entities.Result;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Named
 @RequestScoped
-public class ListResults {
+public class ListResults implements Serializable {
 
     @Inject
     private ResultService resultService;
@@ -21,7 +22,7 @@ public class ListResults {
         if (results != null)
             return results;
         else
-            return resultService.findAllResults();
+            return results = resultService.findAllResults();
     }
 
     public String removeResult(Result result) {

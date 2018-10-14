@@ -10,6 +10,10 @@
     <ui:define name="content">
         <h:form>
             <h:panelGrid styleClass="table table-striped" columns="3">
+                <h:outputLabel value="Tor:" for="circuit"/>
+                <h:inputText styleClass="form-control" id="circuit" value="#{editResult.result.circuit}"/>
+                <h:message for="circuit"/>
+
                 <h:outputLabel value="Miejsce:" for="position"/>
                 <h:inputText styleClass="form-control" id="position" value="#{editResult.result.position}"/>
                 <h:message for="position"/>
@@ -17,6 +21,10 @@
                 <h:outputLabel value="Strata do lidera:" for="gap"/>
                 <h:inputText styleClass="form-control" id="gap" value="#{editResult.result.gapToLeader}"/>
                 <h:message for="gap"/>
+
+                <h:outputLabel value="Czy ukończył?:" for="didFinish"/>
+                <h:inputText styleClass="form-control" id="didFinish" value="#{editResult.result.didFinish}"/>
+                <h:message for="didFinish"/>
 
                 <h:outputLabel value="Pit-stopy:" for="pits"/>
                 <h:inputText styleClass="form-control" id="pits" value="#{editResult.result.pitStops}"/>

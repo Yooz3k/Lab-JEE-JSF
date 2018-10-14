@@ -11,8 +11,12 @@
         <h:form>
             <h:panelGrid styleClass="table table-striped" columns="3">
                 <h:outputLabel value="Imię:" for="name"/>
-                <h:inputText styleClass="form-control" id="name" value="#{editDriver.driver.firstName} #{editDriver.driver.secondName}"/>
+                <h:inputText styleClass="form-control" id="name" value="#{editDriver.driver.firstName}"/>
                 <h:message for="name"/>
+
+                <h:outputLabel value="Nazwisko:" for="secondName"/>
+                <h:inputText styleClass="form-control" id="secondName" value="#{editDriver.driver.secondName}"/>
+                <h:message for="secondName"/>
 
                 <h:outputLabel value="Zespół:" for="team"/>
                 <h:inputText styleClass="form-control" id="team" value="#{editDriver.driver.team}"/>
@@ -22,11 +26,11 @@
                 <h:inputText styleClass="form-control" id="nationality" value="#{editDriver.driver.nationality}"/>
                 <h:message for="nationality"/>
 
-                <h:outputLabel value="Data urodzenia (RRRR-MM-DD):" for="birthDate"/>
-                <h:inputText styleClass="form-control" id="birthDate" value="#{editDriver.driver.dateOfBirth}">
+                <h:outputLabel value="Data urodzenia (RRRR-MM-DD):" for="birthdate"/>
+                <h:inputText styleClass="form-control" id="birthdate" value="#{editDriver.driver.dateOfBirth}">
                     <f:convertDateTime pattern="yyyy-MM-dd"/>
                 </h:inputText>
-                <h:message for="birthDate"/>
+                <h:message for="birthdate"/>
 
                 <h:outputLabel value="Wyniki:" for="results"/>
                 <h:selectManyListbox styleClass="form-control" id="results"
